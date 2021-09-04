@@ -1,0 +1,365 @@
+
+{% extends 'headerfooter.html' %}
+{% block content %}
+
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Courses</h1>
+                       <!--  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row cat-input">
+                        <div class="col-xl-10 col-lg-10">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Course</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="basic-form">
+                                        <form action="" method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+
+                                            <div class="form-row">
+                                                 <div class="form-group col-md-4">
+                                                    <label>Course Name </label>
+                                                    {{form.name}}
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Course Sub Name </label>
+                                                    {{form.sub_name}}
+                                                </div>
+                                                <div class="form-group col-1">
+<!--                                                    <label hidden> Image</label>-->
+<!--                                                <img src="/static/img/plus.png" style="width:25px;hight:25px;border-top-width: medium;">-->
+                                                </div>
+                                                 <div class="form-group col-3">
+                                                 <label> Image</label>
+                                                 <div class="custom-file">
+
+{{form.course_image.value.url}}
+                                {% if form.course_image%}
+                                    <img id="output" class="row" src="{{form.course_image.value.url}}"
+                                    style="width:25px;hight:25px;display:inline;margin-left:-295px;">
+                                {% else %}
+                                    <img id="output" class="row" src="/static/img/plus.png"
+                                 style="width:25px;hight:25px;display:inline;margin-left:-50px;margin-right: 20px;">
+
+                                {% endif %}
+                            <input type="file" class="custom-file-input" id="id_course_image"  name="course_image"
+                            onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+                            <label class="custom-file-label" for='id_course_image' >Choose file</label>
+
+
+                                                     </div>
+                                                     </div>
+<!--                                                <div class="form-group col-md-4">-->
+<!--                                                <label>Course Code</label>-->
+<!--                                                    {{form.course_code}}-->
+<!--                                                </div>-->
+
+<!--                                                 <div class="form-group col-md-4">-->
+<!--                                                    <label>Offer</label>-->
+<!--                                                    {{form.is_offer}}-->
+<!--                                                    &lt;!&ndash; <select class="form-control" id="id_is_offer" name="is_offer" value={{form.is_offer}}>-->
+<!--                                                        <option value="" >select</option>-->
+<!--                                                        <option>NO</option>-->
+<!--                                                        <option>YES</option>-->
+<!--                                                    </select> &ndash;&gt;-->
+<!--                                                </div>-->
+
+                                                <div class="form-group col-md-3">
+                                                    <label>Course Type </label>
+<!--                                                    {{form.course_type}}-->
+                                                    <select class="form-control" id="id_course_type" name="course_type" value={{form.course_type}}>
+                                                        <option value="" >select</option>
+                                                        <option value="Paid" {% if form.course_type.value == "Paid" %}selected{% endif %}>Paid</option>
+                                                        <option value="Free" {% if form.course_type.value == "Free" %}selected{% endif %}>Free</option>
+                                                    </select>
+                                                </div>
+
+<!--                                                <div class="form-group col-md-4">-->
+<!--                                                    <label>Course Status </label>-->
+<!--&lt;!&ndash;                                                   {{form.status}}&ndash;&gt;-->
+<!--                                                    <select class="form-control" id="id_status" name="status">-->
+<!--                                                        <option value="" >select</option>-->
+<!--                                                        <option value="Now Active" {% if form.status.value == "Now Active" %}selected{% endif %}>Now Active</option>-->
+<!--                                                        <option value="Up Coming" {% if form.status.value == "Up Coming" %}selected{% endif %}>Up Coming</option>-->
+<!--                                                        <option value="Completed" {% if form.status.value == "Completed" %}selected{% endif %}>Completed</option>-->
+<!--                                                    </select>-->
+<!--                                                </div>-->
+                                                 <div class="form-group col-md-3">
+                                                    <label>Category(Select One)</label>
+                                                     {{form.category_id}}
+                                                </div>
+
+
+
+                                                 <div class="form-group col-md-3">
+                                                      <label>task (Select One)</label>
+                                                    {{form.task_id}}
+                                                </div>
+
+                                                <div class="form-group col-md-3">
+                                                    <label>Author (Select One)</label>
+                                                    {{form.author_id}}
+
+                                                </div>
+<!--                                                <div class="form-group col-md-4">-->
+<!--                                                    <label>Module</label>-->
+<!--                                                    {{form.modules}}-->
+
+<!--                                                </div>-->
+<!--                                                 <div class="form-group col-md-4">-->
+<!--                                                    <label>Mini Projects</label>-->
+<!--                                                    {{form.miniprojects}}-->
+
+<!--                                                </div>-->
+<!--                                                 <div class="form-group col-md-4">-->
+<!--                                                    <label>Major Projects</label>-->
+<!--                                                    {{form.major_projects}}-->
+
+<!--                                                </div>-->
+<!--                                            <div class="form-group col-md-3">-->
+<!--                                                    <label>Price</label>-->
+<!--                                                    {{form.price}}-->
+<!--                                                </div>-->
+                                                <div class="form-group col-md-2">
+                                                    <labelo>Price</label>
+                                                    {{form.price}}
+
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <labelo>Course length </label>
+                                                    {{form.total_length_course}}
+
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <labelo>Slots Available</label>
+                                                    {{form.slots_available}}
+
+                                                </div>
+<!--                                                 <div class="form-group col-md-4">-->
+<!--                                                    <labelo>Slots Remaining</label>-->
+<!--                                                    {{form.slots_remaining}}-->
+
+<!--                                                </div>-->
+<!--                                                 <div class="form-group col-md-4">-->
+<!--                                                    <labelo>Joined Slots</label>-->
+<!--                                                    {{form.joined_slots}}-->
+
+<!--                                                </div>-->
+                                                 <div class="form-group col-md-2">
+                                                    <labelo>Discount Amount</label>
+                                                    {{form.discount_amount}}
+
+                                                </div>
+<!--                                                 <div class="form-group col-md-4">-->
+<!--                                                    <labelo>Coupon dis.Amt.</label>-->
+<!--                                                    {{form.coupon_discount_amount}}-->
+
+<!--                                                </div>-->
+                                                 <div class="form-group col-md-2">
+                                                    <labelo>Tax Amount</label>
+                                                    {{form.tax_amount}}
+
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <labelo>Credit</label>
+                                                    {{form.course_code}}
+
+                                                </div>
+
+<!--                                                 <div class="form-group col-md-4">-->
+<!--                                                    <labelo>Total couponprice with tax</label>-->
+<!--                                                    {{form.total_couponprice_with_tax}}-->
+
+<!--                                                </div>-->
+<!--                                                -->
+
+                                                
+                                               <!--   <div class="form-group col-md-12">
+                                                    <label>Phone Code</label>
+                                                    <input type="text" class="form-control" name="phonecode">
+                                                </div> -->
+                                                 <!-- <div class="form-group col-md-12">
+                                                    <label>Phone Number</label>
+                                                    <input type="text" class="form-control" name="phoneno">
+                                                </div> -->
+                                                 <!-- <div class="form-group col-md-12">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control" name="email">
+                                                </div> -->
+                                                <!--  <div class="form-group col-md-12">
+                                                    <label>Password</label>
+                                                    <input type="password" class="form-control" name="password">
+                                                </div> -->
+                                                
+                                            </div>
+                                           <!--  <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control" rows="2" cols="12" name="description"></textarea>
+                                                </div>
+                                            </div> -->
+                                          <!--   <div class="form-row ">
+                                                <div class="form-group col-md-6">
+                                                    <label>Category</label>
+                                                    <select id="inputState" class="form-control" name="category">
+                                                        <option selected>Choose...</option>
+                                                        <option>Option 1</option>
+                                                        <option>Option 2</option>
+                                                        <option>Option 3</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label>Image Input</label>
+                                                    <input type="file" class="form-control-file" name="img">
+                                                </div> -->
+
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Table -->
+
+                    <br>
+                    <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1> -->
+                    <!-- <p class="mb-4">All the products that added</p>
+ -->
+                    <!-- DataTales Example -->
+                  <!--   <div class="card shadow mb-4"> -->
+                        <!-- <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Product DataTables</h6>
+                        </div> -->
+                       <!--  <div class="card-body">
+                            <div class="table-responsive"> -->
+                                <!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Description</th>
+                                            <th>Category</th>
+                                            <th>Price</th>
+                                            <th>Img</th>
+                                            <th>Edit & delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>63</td>
+                                            <td>2011/07/25</td>
+                                            <td>$170,750</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ashton Cox</td>
+                                            <td>Junior Technical Author</td>
+                                            <td>San Francisco</td>
+                                            <td>66</td>
+                                            <td>2009/01/12</td>
+                                            <td>$86,000</td>
+                                        </tr>
+                                    </tbody>
+                                </table> -->
+                            <!-- </div>
+                        </div> -->
+                   <!--  </div> -->
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+           
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/static/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/static/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/static/js/demo/datatables-demo.js"></script>
+
+
+</body>
+
+</html>
+
+{% endblock %}

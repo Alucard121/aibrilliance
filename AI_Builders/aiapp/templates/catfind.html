@@ -1,0 +1,143 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Product</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div> -->
+
+                     <!-- Content Row -->
+                    <!-- <div class="row cat-input">
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Product Input</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="basic-form">
+                                        <form>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-8">
+                                                    <label>Product Name</label>
+                                                    <input type="text" class="form-control" placeholder="Cheese Burger" name="productName">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label>Price</label>
+                                                    <input type="number" class="form-control" name="price">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control" rows="2" cols="12" name="description"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-row ">
+                                                <div class="form-group col-md-6">
+                                                    <label>Category</label>
+                                                    <select id="inputState" class="form-control" name="category">
+                                                        <option selected>Choose...</option>
+                                                        <option>Option 1</option>
+                                                        <option>Option 2</option>
+                                                        <option>Option 3</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label>Image Input</label>
+                                                    <input type="file" class="form-control-file" name="img">
+                                                </div>
+
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+ 
+
+                    <!-- Table -->
+
+                    <br>
+                    <!-- <h1 class="h3 mb-2 text-gray-800">Category Lists</h1>
+                    <p class="mb-4">All the Categories that added</p> -->
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <!-- <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Category DataTables</h6>
+                        </div> -->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form action="/catupdate/" method="post">
+                                    {% csrf_token %}
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th> ID</th>
+                                            <th>Category Code </th>
+                                            <th>Category</th>
+                                            <th>Edit</th>
+                                            
+                                         
+                                            
+                                        </tr>
+                                    </thead>
+                                   <!--  <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                          
+                                        </tr>
+                                    </tfoot> -->
+                                    <tbody>
+                                      
+                                        <tr><td><input type="text" name="txtid" value="{{x.id}}" readonly="true"></td>
+                                            <td><input type="text" name="catcode" value="{{x.catcode}}"/></td>
+                                            <td><input type="text" name="catname" value="{{x.catname}}"/></td>
+                                            <td><input type="submit" name="btnsubmit" value="Update"/></td></td>
+                                          
+                                           
+                                        </tr>
+                                       <!--  <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>63</td>
+                                            <td>2011/07/25</td>
+                                            <td>$170,750</td>
+                                        </tr>
+                                        <tr> -->
+                                           <!--  <td>Ashton Cox</td>
+                                            <td>Junior Technical Author</td>
+                                            <td>San Francisco</td>
+                                            <td>66</td>
+                                            <td>2009/01/12</td>
+                                            <td>$86,000</td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+    {% endblock %}        

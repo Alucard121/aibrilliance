@@ -1,0 +1,83 @@
+1.registration
+--------------
+    http://localhost:8000/app/api/signup
+        post---->
+        {"username":"jas","phone_code":"91","phone_number":"9898786756"}
+        username mandatory,if not please add phone number
+        default password = 12345678 (auto create)
+2.login
+--------
+
+    http://localhost:8000/app/api/login
+    post----->
+    {"phone_number":"9898786756","phone_code":"91","password":"12345678","email":""}
+3.forgot password
+-----------------
+    get---->
+    http://localhost:8000/app/api/send/otp?code=91&phone=9645715015
+    otp get from phone message
+    id get from api response
+4.verify otp and enter new password
+-----------------------------------
+    post---->
+    http://localhost:8000/app/api/forgot/password
+    request  body---->
+    {"otp":"123434","new_pass":"1234","confirm_pass":"1234","code":"91","number":"9645715015","session_id":"123456456"}
+
+5.courses
+    1.all courses list (no filtering)
+        get ---->20 items
+        http://localhost:8000/app/api/courses/list
+        pagination--->
+            http://localhost:8000/app/api/courses/list?page=1
+    2.courses filter by(tasks--passing task id)
+        get ----->20 items
+        http://localhost:8000/app/api/courses/list?task={id of task---->get from task list}
+        pagination----->
+        http://localhost:8000/app/api/courses/list?page=1&task={id of task}
+    3. courses filter last 5 added course
+        get ----->
+        http://localhost:8000/app/api/courses/list?recent=5
+    4. courses filter by(type--passing type="Paid" or type="Free")
+        get ----->20 items
+        http://localhost:8000/app/api/courses/list?type={value}
+        pagination----->
+        http://localhost:8000/app/api/courses/list?page=1&type={value}
+6.Category list
+    get ---->20 items
+    http://localhost:8000/app/api/category/list
+    pagination----->
+        http://localhost:8000/app/api/category/list?page=1
+7.Tasks list
+
+    get ---->20 items
+    http://localhost:8000/app/api/task/list
+    pagination----->
+        http://localhost:8000/app/api/task/list?page=1
+8.Bootcamp list
+    get ---->20 items
+    http://localhost:8000/app/api/bootcamp/list
+    pagination----->
+        http://localhost:8000/app/api/bootcamp/list?page=1
+    recently added bootcamp(last 2 bootcamps)
+        http://localhost:8000/app/api/bootcamp/list?next=2
+9.Save Help
+    post--->
+    http://localhost:8000/app/api/help
+    {"name":"","email":"","query":""}
+10.Course details list
+    get----->20 items
+    http://localhost:8000/app/api/courses/details/list
+
+    filter by id of course
+    http://localhost:8000/app/api/courses/details/list?id={id of course}
+11. Webinar list
+    1.get----->last 4 items
+    http://localhost:8000/app/api/webinar/list?type=upcoming
+    http://localhost:8000/app/api/webinar/list?type=past
+    http://localhost:8000/app/api/webinar/list?type=all
+    2.get all items
+    http://localhost:8000/app/api/webinar/list
+
+
+
